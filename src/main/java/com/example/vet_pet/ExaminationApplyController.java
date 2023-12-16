@@ -1,7 +1,9 @@
 package com.example.vet_pet;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,8 +13,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class ExaminationApplyController {
+public class ExaminationApplyController implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -24,13 +30,27 @@ public class ExaminationApplyController {
     private ChoiceBox<String> selectRoom;
     @FXML
     private ChoiceBox<Integer> selectSlot;
-    @FXML
-    public void initialize(){
-        Pet.setData();
-        selectSlot.getItems().addAll(1, 2, 3, 4,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        selectRoom.getItems().addAll("room 1", "room 2", "room 3");
-    }
 
+    Integer choiceSlot0;
+    private List<Integer>slots=new ArrayList<>();
+    private List<Integer>choosedslots=new ArrayList<>();
+    private List<Integer> setdataAh()
+    {
+        for (int i = 1; i <= 20; i++) {
+            slots.add(i);
+        }
+        return slots;
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setdataAh();
+
+        selectSlot.getItems().addAll(slots);
+        selectRoom.getItems().addAll("room 1", "room 2", "room 3");
+
+        selectRoom.setOnAction(this::choiceRoom);
+        selectSlot.setOnAction(this::choiceSlot);
+    }
     @FXML
     public void searchAction (){
         String input = searchField.getText();
@@ -44,54 +64,34 @@ public class ExaminationApplyController {
         }
     }
     @FXML
-    public void choiceSlot(MouseEvent event) throws IOException{
-        int choiceSlot =  selectSlot.getSelectionModel().getSelectedItem();
-        for(int i=0; i<15;i++){
-            if (choiceSlot== i){
-                System.out.println(i);
-            }
-        }
+    public void choiceSlot(ActionEvent event){
+        choiceSlot0 =  selectSlot.getValue();
+        System.out.println(choiceSlot0);
     }
 
     @FXML
-    public void choiceRoom(MouseEvent event) throws IOException{
-        String choiceStatus = selectRoom.getSelectionModel().getSelectedItem();
+    public void choiceRoom(ActionEvent event){
+//        String choiceStatus = selectRoom.getSelectionModel().getSelectedItem();
+        String choiceStatus = selectRoom.getValue();
         System.out.println(choiceStatus);
         if(choiceStatus.equals("room 1")){
-            //   pet.setStatus(choiceStatus);
-            //pet.whichRoom
-            // pet.setRoomNumber(2);
-            for (int i=0; i<Room.SLOTS; i++){
-//                if(Room.rooms[2].pets[i]== null){
-//                    System.out.println("yes");
-//                    selectSlot.getItems().addAll(i+1);
-//                }
-                System.out.println(i);
-            }
             System.out.println("yes1");
             selectSlot.setVisible(true);
         }
-         if (choiceStatus.equals("room 2")){
-            //  pet.setStatus(choiceStatus);
-            // pet.setRoomNumber(3);
-            for (int i=0; i<Room.SLOTS; i++){
-                if(Room.rooms[3].pets[i]== null){
-                    System.out.println("yes");
-                    selectSlot.getItems().addAll(i+1);
-                }
-            }
+        if (choiceStatus.equals("room 2")){
+            System.out.println("yes2");
             selectSlot.setVisible(true);
         }
-         if (choiceStatus.equals("room 3")){
-            //  pet.setStatus(choiceStatus);
-            // pet.setRoomNumber(4);
-            for (int i=0; i<Room.SLOTS; i++){
-                if(Room.rooms[4].pets[i]== null){
-                    System.out.println("yes");
-                    selectSlot.getItems().addAll(i+1);
-                }
-            }
+        if (choiceStatus.equals("room 3")){
+            System.out.println("yes3");
             selectSlot.setVisible(true);
+        }
+    }
+    public void update(Event event){
+        if(choiceSlot0!=null)
+        {
+            selectSlot.getItems().remove(choiceSlot0);
+            slots.remove(choiceSlot0);
         }
     }
     @FXML
@@ -108,4 +108,5 @@ public class ExaminationApplyController {
     public void setStage(Stage stage){
         this.stage = stage;
     }
+
 }

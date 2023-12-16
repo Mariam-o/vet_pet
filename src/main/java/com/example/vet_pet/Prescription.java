@@ -70,9 +70,7 @@ public class Prescription {
 
     }
 
-    public void setStage(Stage stage){
-        this.stage = stage;
-    }
+
     @FXML
     public void searchAction (){
         String input = searchField.getText();
@@ -92,8 +90,10 @@ public class Prescription {
         pet.setPrescription(newPre);
 
     }
+
     @FXML
-    public void goBack(ActionEvent event) throws IOException {
+    private void goBack2(ActionEvent event) throws IOException {
+
         FXMLLoader loader=new FXMLLoader(getClass().getResource("goRoom.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -103,5 +103,7 @@ public class Prescription {
         stage.setScene(scene);
         stage.show();
     }
-
+    public void setStage(Stage stage){
+        this.stage = stage;
+    }
 }

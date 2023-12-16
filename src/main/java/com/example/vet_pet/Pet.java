@@ -11,10 +11,6 @@ public class Pet {
     private int id;
     private String prescription;
 
-    public Pet() {
-
-    }
-
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -31,9 +27,6 @@ public class Pet {
 
     public enum PetStatus {
         Pendnding, no, on_progress, totally_treated
-    }
-    public enum Room {
-        room1, room2, room3, room4
     }
 
     PetStatus status;

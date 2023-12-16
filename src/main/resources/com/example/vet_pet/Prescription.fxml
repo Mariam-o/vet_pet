@@ -16,11 +16,6 @@
    <children>
       <Pane layoutX="-7.0" layoutY="-7.0" prefHeight="807.0" prefWidth="1292.0">
          <children>
-            <Button layoutX="1134.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="45.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="back" textFill="#2e307c">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Button>
             <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="8.0" prefHeight="387.0" prefWidth="1283.0">
                <children>
                   <TextField fx:id="searchField" alignment="CENTER" prefHeight="26.0" prefWidth="342.0" promptText="Enter ID ">
@@ -78,5 +73,10 @@
                </children>
             </VBox>
          </children></Pane>
+      <Button layoutX="1134.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack2" prefHeight="45.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="back" textFill="#2e307c">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
