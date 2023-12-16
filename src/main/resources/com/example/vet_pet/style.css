@@ -1,0 +1,23 @@
+.image{
+    -fx-background-image: url("assets/Background.png");
+    -fx-background-size: 1280 800;
+    -fx-background-position: center;
+}
+.image1{
+    -fx-background-image: url("assets/Background1.png");
+    -fx-background-size: 1280 800;
+    -fx-background-position: center;
+}
+.image2{
+    -fx-background-image: url("assets/backgroundBook.png");
+    -fx-background-size: 1280 800;
+    -fx-background-position: center;
+}
+.image3{
+    -fx-background-image: url("assets/backgroundGo.png");
+    -fx-background-size: 1280 800;
+    -fx-background-position: center;
+}
+
+
+
