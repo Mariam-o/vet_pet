@@ -1,72 +1,61 @@
 package com.example.vet_pet;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class Prescription {
     private Stage stage;
     @FXML
-    private Label welcomeText;
-    @FXML
     private TextField searchField;
     @FXML
     private TextArea prescription;
+    @FXML
+    private CheckBox adoptCheck;
     Pet pet;
     private Scene scene;
     private Parent root;
+    @FXML
+    private Label alert;
 
     // (choise room)
     @FXML
     private ChoiceBox<String> selectStatus;
-    @FXML
-    private ChoiceBox<Integer> selectSlot;
-
     //  must be @Override
     @FXML
     public void initialize(){
         Pet.setData();
         selectStatus.getItems().addAll("no", "on progress", "totally treated");
-        selectSlot.getItems().addAll(1, 2, 3, 4,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        selectStatus.setOnAction(this::choiceStatus);
     }
 
     @FXML
-    public void choiceStatus(MouseEvent event) throws IOException{
-        String choiceStatus = selectStatus.getSelectionModel().getSelectedItem();
-
+    public void choiceStatus(ActionEvent event){
+        String choiceStatus = selectStatus.getValue();
         if(choiceStatus.equals("no")){
-            pet.setStatus(choiceStatus);
+            adoptCheck.setVisible(false);
+            adoptCheck.setSelected(false);
         }
         if (choiceStatus.equals("on progress")){
-            pet.setStatus(choiceStatus);
+            adoptCheck.setVisible(false);
+            adoptCheck.setSelected(false);
         }
         if (choiceStatus.equals("totally treated")){
-            pet.setStatus(choiceStatus);
+            adoptCheck.setVisible(true);
+            adoptCheck.setSelected(false);
         }
 
-
-    }
-    @FXML
-    public void choiceSlot(MouseEvent event) throws IOException{
-        int choiceSlot = selectSlot.getSelectionModel().getSelectedItem();
-        for(int i=0; i<15;i++){
-            if (choiceSlot== i){
-                System.out.println(i);
-
-            }
-
-        }
 
     }
 
@@ -74,20 +63,70 @@ public class Prescription {
     @FXML
     public void searchAction (){
         String input = searchField.getText();
+        alert.setText("! NO ANIMAL AVAILABLE !");
         if(input != null){
             for(Pet pet: Pet.pets){
                 if(pet.getId() == Integer.parseInt(input)){
+                    alert.setText("");
+                    selectStatus.setDisable(false);
+                    prescription.setDisable(false);
                     this.pet = pet;
-
+                    if(pet.getReadyForAdopt() == true){
+                        adoptCheck.setVisible(true);
+                        adoptCheck.setSelected(true);
+                    }
+                    else {
+                        adoptCheck.setVisible(false);
+                        adoptCheck.setSelected(false);
+                    }
                     prescription.setText(pet.getPrescription());
+                    selectStatus.setValue(String.valueOf(pet.getStatus()));
+
+
                 }
             }
+            if (Integer.parseInt(input) != pet.getId()) {
+
+                restart();
+                alert.setText("! NO ANIMAL AVAILABLE !");
+            }
         }
+
     }
     @FXML
     private void updateData(){
         String newPre = prescription.getText();
         pet.setPrescription(newPre);
+        String newStatus = selectStatus.getValue();
+
+        if(newStatus.equals("no")){
+            pet.setStatus(Pet.PetStatus.no);
+        }
+        if (newStatus.equals("on progress")){
+            pet.setStatus(Pet.PetStatus.on_progress);
+        }
+        if (newStatus.equals("totally treated")){
+            pet.setStatus(Pet.PetStatus.totally_treated);
+        }
+
+        if (adoptCheck.isSelected()){
+            pet.setReadyForAdopt(true);
+        }
+
+       restart();
+
+
+    }
+
+    private void restart(){
+        pet= null;
+        adoptCheck.setVisible(false);
+        adoptCheck.setSelected(false);
+        selectStatus.setValue(" ");
+        searchField.clear();
+        prescription.clear();
+        selectStatus.setDisable(true);
+        prescription.setDisable(true);
 
     }
 
@@ -103,6 +142,11 @@ public class Prescription {
         stage.setScene(scene);
         stage.show();
     }
+//    @FXML
+//    public void setAdoptCheck(ActionEvent event){
+//
+//
+//    }
     public void setStage(Stage stage){
         this.stage = stage;
     }

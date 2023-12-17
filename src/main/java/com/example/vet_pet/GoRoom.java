@@ -13,7 +13,7 @@ public class GoRoom {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    public static int page;
 
     //3 operation , 1 examination << room
 
@@ -30,7 +30,8 @@ public class GoRoom {
     }
 
     @FXML
-    private void goToPrescription(ActionEvent event) throws IOException {
+    private void goToExamination(ActionEvent event) throws IOException {
+        page=1;
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Prescription.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -40,6 +41,19 @@ public class GoRoom {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private void goToOperation(ActionEvent event) throws IOException {
+        page=2;
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Prescription.fxml"));
+        root = loader.load();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Prescription controller=loader.getController();
+        controller.setStage(stage);
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void setStage(Stage stage){
         this.stage = stage;
     }

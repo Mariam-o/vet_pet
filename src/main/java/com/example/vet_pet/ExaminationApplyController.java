@@ -39,7 +39,9 @@ public class ExaminationApplyController implements Initializable {
         for (int i = 1; i <= 20; i++) {
             slots.add(i);
         }
+
         return slots;
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,6 +52,7 @@ public class ExaminationApplyController implements Initializable {
 
         selectRoom.setOnAction(this::choiceRoom);
         selectSlot.setOnAction(this::choiceSlot);
+
     }
     @FXML
     public void searchAction (){
@@ -71,6 +74,7 @@ public class ExaminationApplyController implements Initializable {
 
     @FXML
     public void choiceRoom(ActionEvent event){
+
 //        String choiceStatus = selectRoom.getSelectionModel().getSelectedItem();
         String choiceStatus = selectRoom.getValue();
         System.out.println(choiceStatus);

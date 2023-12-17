@@ -18,6 +18,14 @@
     -fx-background-size: 1280 800;
     -fx-background-position: center;
 }
+.image4{
+    -fx-background-image: url("assets/backgroundVet.png");
+    -fx-background-size: 1280 800;
+    -fx-background-position: center;
+}
+.text1.label{
+-fx-text-fill: #5559ce;
+}
 
 
 

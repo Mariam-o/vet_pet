@@ -33,7 +33,7 @@
                     <ChoiceBox fx:id="selectSlot" onMouseClicked="#choiceSlot" prefHeight="25.0" prefWidth="34.0" visible="false" />
                     <ChoiceBox fx:id="selectRoom" onMouseClicked="#choiceRoom" prefWidth="150.0">
                     </ChoiceBox>
-                    <Button layoutX="890.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="36.0" prefWidth="161.0" text="Update">
+                    <Button layoutX="890.0" layoutY="90.0" mnemonicParsing="false" onAction="#update" onMouseClicked="#update" prefHeight="36.0" prefWidth="161.0" text="BOOK">
                         <VBox.margin>
                             <Insets top="25.0" />
                         </VBox.margin>

@@ -10,6 +10,10 @@ public class Pet {
     private boolean assignedToRoom;
     private int id;
     private String prescription;
+private boolean readyForAdopt = false;
+    public Pet() {
+
+    }
 
     public int getRoomNumber() {
         return roomNumber;
@@ -28,6 +32,9 @@ public class Pet {
     public enum PetStatus {
         Pendnding, no, on_progress, totally_treated
     }
+//    public enum Room {
+//        room1, room2, room3, room4
+//    }
 
     PetStatus status;
     Pet_type type;
@@ -37,13 +44,23 @@ public class Pet {
         this.type = type;
         this.status = status;
         this.id = id;
-    } public Pet(String name,int id, PetStatus status, Pet_type type, String prescription){
+    } public Pet(String name,int id, PetStatus status, Pet_type type, String prescription, boolean readyForAdopt){
         this.prescription = prescription;
         this.name = name;
         this.type = type;
         this.status = status;
         this.id = id;
+        this.readyForAdopt= readyForAdopt;
     }
+
+    public void setReadyForAdopt(boolean readyForAdopt) {
+        this.readyForAdopt = readyForAdopt;
+    }
+
+    public boolean getReadyForAdopt(){
+        return readyForAdopt;
+    }
+
 
     public String getName() {
         return name;
@@ -90,12 +107,13 @@ public class Pet {
         this.status = status;
 
     }
-    public void setStatus(String status) {
-        this.status = PetStatus.valueOf(status);
+    public void setStatus(PetStatus status) {
+        this.status = status;
     }
     public PetStatus getStatus() {
         return status;
     }
+
 
     public static void setData() {
         pets[0] = new Pet("momo", 2022170999, PetStatus.Pendnding, Pet_type.Cat);

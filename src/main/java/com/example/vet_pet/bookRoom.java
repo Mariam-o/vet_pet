@@ -20,7 +20,7 @@ public class bookRoom {
 
     }
     @FXML
-    private void goBack(ActionEvent event) throws IOException {
+    private void goBack (ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("welcomeScreen.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
