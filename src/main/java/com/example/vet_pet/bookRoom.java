@@ -15,7 +15,7 @@ public class bookRoom {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public static int page;
+    public static int page = 0;
     public void setStage (Stage stage){
 
     }
@@ -32,7 +32,7 @@ public class bookRoom {
     }
     @FXML
     private void bookExamination(ActionEvent event) throws IOException {
-        page= 1;
+        page = 1;
         FXMLLoader loader=new FXMLLoader(getClass().getResource("examination-apply.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

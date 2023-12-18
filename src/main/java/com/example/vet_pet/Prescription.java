@@ -23,7 +23,7 @@ public class Prescription {
     private TextArea prescription;
     @FXML
     private CheckBox adoptCheck;
-    Pet pet;
+   static Pet pet;
     private Scene scene;
     private Parent root;
     @FXML
@@ -65,7 +65,7 @@ public class Prescription {
         String input = searchField.getText();
         alert.setText("! NO ANIMAL AVAILABLE !");
         if(input != null){
-            for(Pet pet: Pet.pets){
+            for(Pet pet: Pet.Pets){
                 if(pet.getId() == Integer.parseInt(input)){
                     alert.setText("");
                     selectStatus.setDisable(false);
@@ -113,7 +113,7 @@ public class Prescription {
             pet.setReadyForAdopt(true);
         }
 
-       restart();
+        restart();
 
 
     }
@@ -142,7 +142,7 @@ public class Prescription {
         stage.setScene(scene);
         stage.show();
     }
-//    @FXML
+    //    @FXML
 //    public void setAdoptCheck(ActionEvent event){
 //
 //

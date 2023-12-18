@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 public class Pet {
     public static ArrayList<Pet> Pets = new ArrayList<>();
-    public static final int PETSNUMBER = 20;
-    public static Pet[] pets = new Pet[PETSNUMBER];
+    // public static final int PETSNUMBER = 20;
+//    public static Pet[] pets = new Pet[PETSNUMBER];
 
     private String name;
     private boolean assignedToRoom;
     private int id;
-    private String prescription;
-private boolean readyForAdopt = false;
+   static private String prescription;
+    private boolean readyForAdopt = false;
     public Pet() {
 
     }
@@ -25,7 +25,7 @@ private boolean readyForAdopt = false;
 
     private int roomNumber;
 
-    private enum Pet_type {
+    public enum Pet_type {
         Cat, Dog
     }
 
@@ -114,29 +114,40 @@ private boolean readyForAdopt = false;
         return status;
     }
 
-
+    static Pet pets;
     public static void setData() {
-        pets[0] = new Pet("momo", 2022170999, PetStatus.Pendnding, Pet_type.Cat);
+
+        pets = new Pet("momo", 2022170999, PetStatus.Pendnding, Pet_type.Cat);
+        Pets.add(pets);
         // pets[0].setPrescription("test sick");
-        pets[1] = new Pet("bobo", 2022170998,  PetStatus.Pendnding, Pet_type.Dog);
-        pets[2] = new Pet("nono", 2022170997, PetStatus.Pendnding, Pet_type.Cat);
-        pets[3] = new Pet("lolo", 2022170996, PetStatus.Pendnding, Pet_type.Cat);
-        pets[4] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[5] = new Pet("bobo", 2022170998,  PetStatus.Pendnding, Pet_type.Dog);
-        pets[6] = new Pet("nono", 2022170997, PetStatus.Pendnding, Pet_type.Cat);
-        pets[7] = new Pet("lolo", 2022170996, PetStatus.Pendnding, Pet_type.Cat);
-        pets[8] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[9] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[10] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[11] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[12] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[13] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[14] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        pets[15] = new Pet("momo", 2022170989, PetStatus.Pendnding, Pet_type.Cat);
-        pets[16] = new Pet("momo", 2022170979, PetStatus.Pendnding, Pet_type.Cat);
-        pets[17] = new Pet("momo", 2022170969, PetStatus.Pendnding, Pet_type.Cat);
-        pets[18] = new Pet("momo", 2022170969, PetStatus.Pendnding, Pet_type.Cat);
-        pets[19] = new Pet("momo", 2022170959, PetStatus.Pendnding, Pet_type.Cat);
+        pets = new Pet("bobo", 2022170998,  PetStatus.Pendnding, Pet_type.Dog);
+        Pets.add(pets);
+        pets = new Pet("nono", 2022170997, PetStatus.Pendnding, Pet_type.Cat);
+        Pets.add(pets);
+        pets = new Pet("lolo", 2022170996, PetStatus.Pendnding, Pet_type.Cat);
+        Pets.add(pets);
+        pets = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+        Pets.add(pets);
+        pets = new Pet("bobo", 2022170998,  PetStatus.Pendnding, Pet_type.Dog);
+        Pets.add(pets);
+        pets = new Pet("nono", 2022170997, PetStatus.Pendnding, Pet_type.Cat);
+        Pets.add(pets);
+        pets = new Pet("lolo", 2022170996, PetStatus.Pendnding, Pet_type.Cat);
+        Pets.add(pets);
+        pets = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+        Pets.add(pets);
+        pets = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+        Pets.add(pets);
+//        pets[10] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+//        pets[11] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+//        pets[12] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+//        pets[13] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+//        pets[14] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
+//        pets[15] = new Pet("momo", 2022170989, PetStatus.Pendnding, Pet_type.Cat);
+//        pets[16] = new Pet("momo", 2022170979, PetStatus.Pendnding, Pet_type.Cat);
+//        pets[17] = new Pet("momo", 2022170969, PetStatus.Pendnding, Pet_type.Cat);
+//        pets[18] = new Pet("momo", 2022170969, PetStatus.Pendnding, Pet_type.Cat);
+//        pets[19] = new Pet("momo", 2022170959, PetStatus.Pendnding, Pet_type.Cat);
 
         // pets[19] = new Pet( "", 2022170980, "", "");
     }
