@@ -170,7 +170,7 @@ public class ExaminationApplyController implements Initializable {
                 }
                 selectSlot.setVisible(true);
                 choiceSlot(event);
-                roomNumber = 2; // new
+                roomNumber = 2; // neww
             }
             if (choiceStatus.equals("room 4")){
                 selectRoom.setValue("room_4");
