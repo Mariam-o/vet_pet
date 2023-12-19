@@ -92,6 +92,7 @@ public class ExaminationApplyController implements Initializable {
                     if(pet.slot != -1)
                         roomNumber = Room.FindPetInRoom(pet);
                     selectRoom.setDisable(false);
+                    selectSlot.setDisable(false); // new_final
                     alert.setText("");
                 }
             }
@@ -103,7 +104,7 @@ public class ExaminationApplyController implements Initializable {
             //vet in operation 2 3 4
             if(bookRoom.page == 2){
                 if(roomNumber != -1){
-                    //in examination
+                    //pet allready exist operation
                     if(roomNumber > 1) {
                         System.out.println("in operation");
                         selectSlot.setVisible(false);
@@ -111,18 +112,19 @@ public class ExaminationApplyController implements Initializable {
                         selectRoom.setDisable(true);
                         //alert.setText("Pet Already in Operation"); // could be wrong mess
                         alert.setText("Pet in System");
+                        selectSlot.setDisable(true);
                     }
                 }
             }
-            //vet in exmination
-            //pet in  operation
+            //pet allready exist examination
             else if(bookRoom.page == 1) {
                 if(roomNumber != -1){
                     selectSlot.setVisible(false);
                //     selectSlot.setDisable(false);
                     selectRoom.setValue("room" + roomNumber);
                     selectRoom.setDisable(true);
-                    alert.setText("Pet in System");
+                    selectSlot.setDisable(true);
+                    alert.setText("Pet in System"); // examination ex
                 }
             }
         }
@@ -186,6 +188,7 @@ public class ExaminationApplyController implements Initializable {
                 roomNumber = 3; // new
             }
         }
+
         //examination
         else {
             String choiceStatus = selectRoom.getValue();
@@ -196,13 +199,13 @@ public class ExaminationApplyController implements Initializable {
                 selectSlot.setDisable(false);
                 for (int i = 0; i < Room.rooms.get(0).getPets().length; i++) {
                     System.out.println(Room.rooms.get(0).getPet(i) );
-                    if(Room.rooms.get(2).getPet(i) == null) {
+                    if(Room.rooms.get(0).getPet(i) == null) { // new_final changet 2 to 0
                         selectSlot.getItems().add(i + 1);
                     }
                 }
-                roomNumber = 1;
+                roomNumber = 0;
                // selectSlot.setVisible(true);
-                // choiceSlot(event);
+                 choiceSlot(event);
             }
         }
     }

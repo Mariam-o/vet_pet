@@ -26,7 +26,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="searchField" alignment="CENTER" prefHeight="30.0" prefWidth="569.0" promptText="Enter ID " >
+                  <TextField fx:id="searchField" alignment="CENTER" prefHeight="30.0" prefWidth="569.0" promptText="Enter ID ">
                      <VBox.margin>
                         <Insets left="300.0" right="300.0" top="10.0" />
                      </VBox.margin>
@@ -49,7 +49,7 @@
                      <font>
                         <Font size="24.0" />
                      </font></Label>
-                  <TextArea fx:id="prescription" prefHeight="130.0" prefWidth="203.0" promptText="Enter Prescription" disable="true">
+                  <TextArea fx:id="prescription" disable="true" prefHeight="130.0" prefWidth="203.0" promptText="Enter Prescription">
                      <VBox.margin>
                         <Insets left="400.0" right="400.0" top="10.0" />
                      </VBox.margin>
@@ -68,7 +68,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="selectStatus" disable="true" onMouseClicked="#choiceStatus" prefHeight="35.0" prefWidth="161.0" styleClass=".text1.label" stylesheets="@style.css" >
+                  <ChoiceBox fx:id="selectStatus" disable="true" onMouseClicked="#choiceStatus" prefHeight="35.0" prefWidth="161.0" styleClass=".text1.label" stylesheets="@style.css">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -91,7 +91,7 @@
                </children>
             </VBox>
          </children></Pane>
-      <Button layoutX="1134.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack2" prefHeight="45.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="back" textFill="#5559ce">
+      <Button layoutX="1144.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="45.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="back" textFill="#2e307c">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

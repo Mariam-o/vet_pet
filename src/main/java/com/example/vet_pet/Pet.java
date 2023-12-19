@@ -108,6 +108,8 @@ public class Pet {
         }
         return null;
     }
+
+
     // status
     public void updateStatus(PetStatus status) {
         this.status = status;

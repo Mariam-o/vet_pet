@@ -132,21 +132,16 @@ public class Prescription {
 
     @FXML
     private void goBack(ActionEvent event) throws IOException {
-
         FXMLLoader loader=new FXMLLoader(getClass().getResource("bookRoom.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GoRoom controller=loader.getController();
+        bookRoom controller=loader.getController();
         controller.setStage(stage);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    //    @FXML
-//    public void setAdoptCheck(ActionEvent event){
-//
-//
-//    }
+
     public void setStage(Stage stage){
         this.stage = stage;
     }
