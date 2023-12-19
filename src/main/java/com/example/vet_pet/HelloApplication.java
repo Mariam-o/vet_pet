@@ -1,5 +1,4 @@
 package com.example.vet_pet;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

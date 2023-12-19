@@ -23,7 +23,7 @@ public class Prescription {
     private TextArea prescription;
     @FXML
     private CheckBox adoptCheck;
-   static Pet pet;
+    static Pet pet;
     private Scene scene;
     private Parent root;
     @FXML
@@ -131,9 +131,9 @@ public class Prescription {
     }
 
     @FXML
-    private void goBack2(ActionEvent event) throws IOException {
+    private void goBack(ActionEvent event) throws IOException {
 
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("goRoom.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("bookRoom.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         GoRoom controller=loader.getController();
