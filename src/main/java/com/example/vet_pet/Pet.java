@@ -3,24 +3,21 @@ import java.util.ArrayList;
 
 public class Pet {
     public static ArrayList<Pet> Pets = new ArrayList<>();
-    // public static final int PETSNUMBER = 20;
-//    public static Pet[] pets = new Pet[PETSNUMBER];
+    public static ArrayList<String> Pets_string = new ArrayList<>();
 
     private String name;
-    private boolean assignedToRoom;
     private int id;
-    static private String prescription;
+    private String prescription;
+    private String describe;
     private boolean readyForAdopt = false;
-
-
+    private String gender;
+    private String imgSrc;
+    private String color;
     public int slot = -1;
 
     public Pet() {
 
     }
-
-
-
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -38,19 +35,15 @@ public class Pet {
     public enum PetStatus {
         Pendnding, no, on_progress, totally_treated
     }
-//    public enum Room {
-//        room1, room2, room3, room4
-//    }
 
-    PetStatus status;
-    Pet_type type;
-    Room whichRoom;
-    public Pet(String name,int id, PetStatus status, Pet_type type){
+    public PetStatus status;
+    public Pet_type type;
+    public Pet(String name, int id, PetStatus status, Pet_type type){
         this.name = name;
         this.type = type;
         this.status = status;
         this.id = id;
-    } public Pet(String name,int id, PetStatus status, Pet_type type, String prescription, boolean readyForAdopt){
+    } public Pet(String name, int id, PetStatus status, Pet_type type, String prescription, boolean readyForAdopt){
         this.prescription = prescription;
         this.name = name;
         this.type = type;
@@ -58,48 +51,63 @@ public class Pet {
         this.id = id;
         this.readyForAdopt= readyForAdopt;
     }
-
+    public Pet(String name, Pet_type type) {
+        this.id = Pets.size() + 1;
+        this.name = name;
+        this.type = type;
+        this.status = PetStatus.Pendnding;
+    }
     public void setReadyForAdopt(boolean readyForAdopt) {
         this.readyForAdopt = readyForAdopt;
     }
-
     public boolean getReadyForAdopt(){
         return readyForAdopt;
     }
-
-
+    public int getSlot() {
+        return slot;
+    }
     public String getName() {
         return name;
     }
-
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
     public void setPrescription(String prescription) {
         this.prescription = prescription;
     }
-
-
+    public String getImgSrc() {
+        return imgSrc;
+    }
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
     public String getPrescription() {
         return prescription;
     }
-
-    Pet(String name, Pet_type type) {
-        this.id = Pets.size() + 1;
-        this.name = name;
-        this.type = type;
-        this.status = PetStatus.Pendnding;
+    public String getDescribe() {
+        return describe;
     }
-
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
     //returning null if there's no such pet
     public static Pet getPet(int id) {
         for (Pet pet : Pets) {
@@ -108,9 +116,6 @@ public class Pet {
         }
         return null;
     }
-
-
-    // status
     public void updateStatus(PetStatus status) {
         this.status = status;
 
@@ -121,46 +126,45 @@ public class Pet {
     public PetStatus getStatus() {
         return status;
     }
-
     public void setSlot(int slot) {
         this.slot = slot;
     }
+    public Pet_type getType() {
+        return type;
+    }
+    public void setType(Pet_type type) {
+        this.type = type;
+    }
+    @Override
+    public String toString(){
+        String data = "";
+        String type;
+        if(getType() == Pet_type.Cat)
+            type = "cat";
+        else
+            type = "dog";
+        String status;
+        if(getStatus() == PetStatus.no)
+            status = "no";
+        else if (getStatus() == PetStatus.Pendnding)
+            status = "pending";
+        else if (getStatus() == PetStatus.totally_treated)
+            status = "treated";
+        else
+            status = "on";
 
-    static Pet pet;
-    public static void setData() {
+        data = data.concat(String.valueOf(getId()));
+        data = data.concat(",").concat(getName()).concat(",");
+        data = data.concat(getGender()).concat(",");
+        data = data.concat(type).concat(",");
+        data = data.concat(getImgSrc()).concat(",");
+        data = data.concat(status).concat(",");
+        data = data.concat(getDescribe()).concat(",");
+        data = data.concat(String.valueOf(getRoomNumber()));
+        data = data.concat(",").concat(String.valueOf(getSlot())).concat(",");
+        data = data.concat(getColor()).concat(",");
+        data = data.concat(getPrescription());
 
-        pet = new Pet("momo", 2022170999, PetStatus.Pendnding, Pet_type.Cat);
-        Pets.add(pet);
-        // pets[0].setPrescription("test sick");
-        pet = new Pet("bobo", 2022170998,  PetStatus.Pendnding, Pet_type.Dog);
-        Pets.add(pet);
-        pet = new Pet("nono", 2022170997, PetStatus.Pendnding, Pet_type.Cat);
-        Pets.add(pet);
-        pet = new Pet("lolo", 2022170996, PetStatus.Pendnding, Pet_type.Cat);
-        Pets.add(pet);
-        pet = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        Pets.add(pet);
-        pet = new Pet("bobo", 2022170998,  PetStatus.Pendnding, Pet_type.Dog);
-        Pets.add(pet);
-        pet = new Pet("nono", 2022170997, PetStatus.Pendnding, Pet_type.Cat);
-        Pets.add(pet);
-        pet = new Pet("lolo", 2022170996, PetStatus.Pendnding, Pet_type.Cat);
-        Pets.add(pet);
-        pet = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        Pets.add(pet);
-        pet = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-        Pets.add(pet);
-//        pets[10] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-//        pets[11] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-//        pets[12] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-//        pets[13] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-//        pets[14] = new Pet("soso", 2022170995, PetStatus.Pendnding, Pet_type.Dog);
-//        pets[15] = new Pet("momo", 2022170989, PetStatus.Pendnding, Pet_type.Cat);
-//        pets[16] = new Pet("momo", 2022170979, PetStatus.Pendnding, Pet_type.Cat);
-//        pets[17] = new Pet("momo", 2022170969, PetStatus.Pendnding, Pet_type.Cat);
-//        pets[18] = new Pet("momo", 2022170969, PetStatus.Pendnding, Pet_type.Cat);
-//        pets[19] = new Pet("momo", 2022170959, PetStatus.Pendnding, Pet_type.Cat);
-
-        // pets[19] = new Pet( "", 2022170980, "", "");
+        return data;
     }
 }

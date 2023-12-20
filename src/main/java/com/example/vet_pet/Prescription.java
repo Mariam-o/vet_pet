@@ -35,7 +35,6 @@ public class Prescription {
     //  must be @Override
     @FXML
     public void initialize(){
-        Pet.setData();
         selectStatus.getItems().addAll("no", "on progress", "totally treated");
         selectStatus.setOnAction(this::choiceStatus);
     }
@@ -55,10 +54,7 @@ public class Prescription {
             adoptCheck.setVisible(true);
             adoptCheck.setSelected(false);
         }
-
-
     }
-
 
     @FXML
     public void searchAction (){
@@ -79,10 +75,8 @@ public class Prescription {
                         adoptCheck.setVisible(false);
                         adoptCheck.setSelected(false);
                     }
-                    prescription.setText(pet.getPrescription());
+                    prescription.setPromptText(pet.getPrescription());
                     selectStatus.setValue(String.valueOf(pet.getStatus()));
-
-
                 }
             }
             if (Integer.parseInt(input) != pet.getId()) {
@@ -96,21 +90,25 @@ public class Prescription {
     @FXML
     private void updateData(){
         String newPre = prescription.getText();
-        pet.setPrescription(newPre);
         String newStatus = selectStatus.getValue();
-
-        if(newStatus.equals("no")){
-            pet.setStatus(Pet.PetStatus.no);
-        }
-        if (newStatus.equals("on progress")){
-            pet.setStatus(Pet.PetStatus.on_progress);
-        }
-        if (newStatus.equals("totally treated")){
-            pet.setStatus(Pet.PetStatus.totally_treated);
-        }
-
-        if (adoptCheck.isSelected()){
-            pet.setReadyForAdopt(true);
+        for(Pet pet1 : Pet.Pets) {
+            if(pet1.getId() == pet.getId()) {
+                pet1.setPrescription(newPre);
+                if (newStatus.equals("no")) {
+                    pet1.setStatus(Pet.PetStatus.no);
+                }
+                if (newStatus.equals("on progress")) {
+                    pet1.setStatus(Pet.PetStatus.on_progress);
+                }
+                if (newStatus.equals("totally treated")) {
+                    pet1.setStatus(Pet.PetStatus.totally_treated);
+                }
+                if (adoptCheck.isSelected()) {
+                    pet1.setReadyForAdopt(true);
+                    pet1.setRoomNumber(-1);
+                    pet1.setSlot(-1);
+                }
+            }
         }
 
         restart();

@@ -16,9 +16,10 @@
    <children>
       <Pane layoutX="-7.0" layoutY="-7.0" prefHeight="807.0" prefWidth="1292.0">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="8.0" prefHeight="602.0" prefWidth="1283.0">
+
+            <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="14.0" prefHeight="602.0" prefWidth="1283.0">
                <children>
-                  <Label fx:id="alert" textFill="#d80b0b" visible="true">
+                  <Label fx:id="alert" textFill="#d80b0b">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
@@ -90,11 +91,11 @@
                   </Button>
                </children>
             </VBox>
+            <Button layoutX="1144.0" layoutY="24.0" mnemonicParsing="false" onAction="#goBack" prefHeight="45.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="back" textFill="#2e307c">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Button>
          </children></Pane>
-      <Button layoutX="1144.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="45.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="back" textFill="#2e307c">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

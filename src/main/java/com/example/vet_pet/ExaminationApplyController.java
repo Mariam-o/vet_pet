@@ -38,25 +38,13 @@ public class ExaminationApplyController implements Initializable {
     @FXML
     private Label alert;
 
-    //test room
     Integer roomNumber;
-
-
     Integer choiceSlot0;
     private List<Integer>slots=new ArrayList<>();
     private List<Integer>choosedslots=new ArrayList<>();
-    //    private List<Integer> setdataAh()
-//    {
-//        for (int i = 1; i <= 15; i++) {
-//            slots.add(i);
-//        }
-//        return slots;
-//    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Room.setData();
-        Pet.setData();
-
         if(bookRoom.page == 2){
             //operation
             //vet booking operation after
@@ -80,15 +68,13 @@ public class ExaminationApplyController implements Initializable {
         selectSlot.setVisible(false);
         String input = searchField.getText();
         int id = Integer.parseInt(input);
-         alert.setText("! NO ANIMAL AVAILABLE !");
+        alert.setText("! NO ANIMAL AVAILABLE !");
         if(input != null){
             int roomNumber = -1;
             for(Pet pet: Pet.Pets){
                 if(pet.getId() == id) {
                     this.pet = pet;
                     this.pet.setId(id);
-                    System.out.println(id);
-                    System.out.println("===========================================");
                     if(pet.slot != -1)
                         roomNumber = Room.FindPetInRoom(pet);
                     selectRoom.setDisable(false);
@@ -98,29 +84,26 @@ public class ExaminationApplyController implements Initializable {
             }
             if (Integer.parseInt(input) != pet.getId()) {
                 restart();
-                System.out.println("id ot found ------");
                 alert.setText("! NO ANIMAL AVAILABLE !");
             }
             //vet in operation 2 3 4
             if(bookRoom.page == 2){
                 if(roomNumber != -1){
-                    //pet allready exist operation
+                    //pet already exist in operation
                     if(roomNumber > 1) {
-                        System.out.println("in operation");
                         selectSlot.setVisible(false);
                         selectRoom.setValue("room" + roomNumber);
                         selectRoom.setDisable(true);
-                        //alert.setText("Pet Already in Operation"); // could be wrong mess
+                        //alert.setText("Pet Already in Operation");
                         alert.setText("Pet in System");
                         selectSlot.setDisable(true);
                     }
                 }
             }
-            //pet allready exist examination
+            //pet already exist examination
             else if(bookRoom.page == 1) {
                 if(roomNumber != -1){
                     selectSlot.setVisible(false);
-               //     selectSlot.setDisable(false);
                     selectRoom.setValue("room" + roomNumber);
                     selectRoom.setDisable(true);
                     selectSlot.setDisable(true);
@@ -129,15 +112,8 @@ public class ExaminationApplyController implements Initializable {
             }
         }
     }
-
     public void choiceSlot(ActionEvent event){
-        System.out.println("in choice slot");
         choiceSlot0 =  selectSlot.getValue();
-//        Room.rooms.get(roomNumber).setPet(choiceSlot0,pet);
-        System.out.println(choiceSlot0);
-        System.out.println(choiceSlot0);
-        //selectSlot.setValue(Integer.valueOf(String.valueOf(selectSlot.getValue())));
-        // selectSlot.setValue(selectSlot.getValue());
     }
     @FXML
     public void choiceRoom(ActionEvent event){
@@ -148,9 +124,6 @@ public class ExaminationApplyController implements Initializable {
             if(choiceStatus.equals("room 2")){
                 selectRoom.setValue("room_2");
                 for (int i = 0; i < Room.rooms.get(1).getPets().length; i++) {
-                    System.out.println(i);
-                    System.out.println(Room.rooms.get(1).getPet(i) );
-                    System.out.println(Room.rooms.get(1).getRoomType());
                     if(Room.rooms.get(1).getPet(i) == null){
                         selectSlot.getItems().add(i+1);
                     }
@@ -161,13 +134,9 @@ public class ExaminationApplyController implements Initializable {
             }
             if (choiceStatus.equals("room 3")){
                 selectRoom.setValue("room_3");
-                System.out.println("yes2");
                 for (int i = 0; i < Room.rooms.get(2).getPets().length; i++) {
-                    System.out.println(i);
-                    System.out.println(Room.rooms.get(2).getPet(i) );
                     if(Room.rooms.get(2).getPet(i) == null) {
                         selectSlot.getItems().add(i + 1);
-
                     }
                 }
                 selectSlot.setVisible(true);
@@ -176,10 +145,8 @@ public class ExaminationApplyController implements Initializable {
             }
             if (choiceStatus.equals("room 4")){
                 selectRoom.setValue("room_4");
-                System.out.println("yes3");
                 for (int i = 0; i < Room.rooms.get(3).getPets().length; i++) {
-                    System.out.println(i);
-                    System.out.println(Room.rooms.get(3).getPet(i) );
+
                     if(Room.rooms.get(3).getPet(i) == null)
                         selectSlot.getItems().add(i+1);
                 }
@@ -198,14 +165,12 @@ public class ExaminationApplyController implements Initializable {
                 selectSlot.setVisible(true);
                 selectSlot.setDisable(false);
                 for (int i = 0; i < Room.rooms.get(0).getPets().length; i++) {
-                    System.out.println(Room.rooms.get(0).getPet(i) );
                     if(Room.rooms.get(0).getPet(i) == null) { // new_final changet 2 to 0
                         selectSlot.getItems().add(i + 1);
                     }
                 }
                 roomNumber = 0;
-               // selectSlot.setVisible(true);
-                 choiceSlot(event);
+                choiceSlot(event);
             }
         }
     }
@@ -215,6 +180,7 @@ public class ExaminationApplyController implements Initializable {
         {
             Room.rooms.get(roomNumber).setPet(choiceSlot0-1,pet);
             Room.rooms.get(roomNumber).getPet(choiceSlot0-1).setSlot(choiceSlot0-1);
+            Room.rooms.get(roomNumber).getPet(choiceSlot0-1).setRoomNumber(roomNumber);
             restart();
         }
     }
@@ -223,7 +189,6 @@ public class ExaminationApplyController implements Initializable {
         pet= null;
         selectSlot.setVisible(false);
 
-        //selectRoom.setValue("");
         searchField.clear();
         selectRoom.setValue("");
         selectRoom.setDisable(true);

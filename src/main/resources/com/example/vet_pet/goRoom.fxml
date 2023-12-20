@@ -19,7 +19,7 @@
             </children></Pane>
         <HBox layoutX="258.0" layoutY="256.0" prefHeight="235.0" prefWidth="773.0">
             <children>
-                <Button fx:id="bookOpreation" mnemonicParsing="false" onAction="#goToOperation" prefHeight="120.0" prefWidth="380.0" style="-fx-background-radius: 50;" text="Operation room" textFill="#2e307c">
+                <Button mnemonicParsing="false" onAction="#goToOperation" prefHeight="120.0" prefWidth="380.0" style="-fx-background-radius: 50;" text="Operation room" textFill="#2e307c">
                     <HBox.margin>
                         <Insets top="50.0" />
                     </HBox.margin>
@@ -27,7 +27,7 @@
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Button>
-                <Button fx:id="bookExamination" mnemonicParsing="false" onAction="#goToExamination" prefHeight="120.0" prefWidth="380.0" style="-fx-background-radius: 50;" text="Examination room" textFill="#2e307cf2">
+                <Button mnemonicParsing="false" onAction="#goToExamination" prefHeight="120.0" prefWidth="380.0" style="-fx-background-radius: 50;" text="Examination room" textFill="#2e307cf2">
                     <HBox.margin>
                         <Insets left="50.0" top="50.0" />
                     </HBox.margin>

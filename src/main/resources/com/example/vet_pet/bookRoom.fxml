@@ -16,7 +16,8 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Button>
-         </children></Pane>
+         </children>
+      </Pane>
       <HBox layoutX="258.0" layoutY="256.0" prefHeight="235.0" prefWidth="773.0">
          <children>
             <Button onAction="#bookOpreation" mnemonicParsing="false" prefHeight="120.0" prefWidth="380.0" style="-fx-background-radius: 50;" text="Operation room" textFill="#2e307c">
